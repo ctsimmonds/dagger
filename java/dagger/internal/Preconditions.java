@@ -75,8 +75,10 @@ public final class Preconditions {
         throw new IllegalArgumentException(
             "errorMessageTemplate has more than one format specifier");
       }
+      final String errorMessageArgString = (errorMessageArg instanceof Class) ?
+          ((Class<?>) errorMessageArg).getCanonicalName() : String.valueOf(errorMessageArg);
       throw new NullPointerException(
-          errorMessageTemplate.replaceFirst("%s", String.valueOf(errorMessageArg)));
+          errorMessageTemplate.replaceFirst("%s", errorMessageArgString));
     }
     return reference;
   }

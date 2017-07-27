@@ -56,7 +56,7 @@ public final class AndroidInjection {
     checkNotNull(
         activityInjector,
         "%s.activityInjector() returned null",
-        application.getClass().getCanonicalName());
+        application.getClass());
 
     activityInjector.inject(activity);
   }
@@ -85,18 +85,12 @@ public final class AndroidInjection {
   public static void inject(Fragment fragment) {
     checkNotNull(fragment, "fragment");
     HasFragmentInjector hasFragmentInjector = findHasFragmentInjector(fragment);
-    Log.d(
-        TAG,
-        String.format(
-            "An injector for %s was found in %s",
-            fragment.getClass().getCanonicalName(),
-            hasFragmentInjector.getClass().getCanonicalName()));
 
     AndroidInjector<Fragment> fragmentInjector = hasFragmentInjector.fragmentInjector();
     checkNotNull(
         fragmentInjector,
         "%s.fragmentInjector() returned null",
-        hasFragmentInjector.getClass().getCanonicalName());
+        hasFragmentInjector.getClass());
 
     fragmentInjector.inject(fragment);
   }
@@ -141,7 +135,7 @@ public final class AndroidInjection {
     checkNotNull(
         serviceInjector,
         "%s.serviceInjector() returned null",
-        application.getClass().getCanonicalName());
+        application.getClass());
 
     serviceInjector.inject(service);
   }
@@ -170,7 +164,7 @@ public final class AndroidInjection {
     checkNotNull(
         broadcastReceiverInjector,
         "%s.broadcastReceiverInjector() returned null",
-        application.getClass().getCanonicalName());
+        application.getClass());
 
     broadcastReceiverInjector.inject(broadcastReceiver);
   }
@@ -198,7 +192,7 @@ public final class AndroidInjection {
     checkNotNull(
         contentProviderInjector,
         "%s.contentProviderInjector() returned null",
-        application.getClass().getCanonicalName());
+        application.getClass());
 
     contentProviderInjector.inject(contentProvider);
   }
